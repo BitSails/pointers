@@ -2,27 +2,24 @@
 
 using namespace std;
 
-void myswap(int * ptr1, int* ptr2)
+void myswap(int** ptr1, int** ptr2)//pointers to pointers must be passed to the function
 {
-  auto temp = ptr1;
-  ptr1 = ptr2;
-  ptr2 = temp;
+	int *temp = *ptr1;
+	*ptr1 = *ptr2;
+	*ptr2 = temp;
 }
 
 
 int main()
 {
-  int a = 25, b = 11;    
+	int a = 25, b = 11;
+	int* pa = &a, * pb = &b;//initialize the pointers with which we will work
 
-  cout<<"What am I doing wrong ☹ \n\n";
+	cout << "Now i'm doing everything right :) \n\n";
 
-  cout<<"a = "<<a<<", b = "<<b<<endl;
+	cout << "a = " << *pa << ", b = " << *pb << endl;
 
-//swap(a,b); //why does theirs work????   
- 
-  myswap(a, b); // but mine doesn't ?!?!?!?!!!???
+	myswap(&pa, &pb); // now we pass the addresses of the pointers with which we work to the function
 
-  cout<<"a = "<<a<<", b = "<<b<<endl;
-
-
+	cout << "a = " << *pa << ", b = " << *pb << endl;
 }
